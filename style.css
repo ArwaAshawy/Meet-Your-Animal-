@@ -1,0 +1,936 @@
+/* 
+- The class names are according to BEM https://css-tricks.com/bem-101/
+- Properties are sorted alphabetically
+- Duplicated properties are moved to stand-alone classes e.g text-white { color: white }. 
+- I used W3C's HTML, CSS validator and CSS linter. 
+- Normally I will resize all the used images first for performance reasons and instead of navigation to parts in the same page I would have created different pages.
+- I used different displayes like float, flex and grid to show you what I have learned.  
+*/
+
+body,
+html {
+    height: 100%;
+    font-size: 100%;
+}
+
+* {
+    /* box-sizing to calculate the width */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #5f5a53;
+    font-family: "Open Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: #4e4941;
+    text-transform: uppercase;
+    margin: 2% 0;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+p {
+    line-height: 1.7em;
+}
+
+a {
+    color: #df6e36;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+}
+
+hr {
+    border: #df6e36 thin dotted;
+    margin: 2% 0;
+}
+
+b {
+    font-weight: bolder;
+}
+
+.bg-base {
+    background: center no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    /* positon relative to create a positioning context for the element's children e.g (home-cover) */
+    position: relative;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.bg-black {
+    background-color: black;
+}
+
+.big-headline {
+    font-size: 1.5em;
+}
+
+.big-word {
+    font-size: 120%;
+}
+
+.border-rounded {
+    border-radius: 13px;
+}
+
+.btn {
+    display: inline-block;
+    border: none;
+    border-radius: 0.3125em;
+    box-shadow: none;
+    font-weight: bold;
+    /* to make the button move down when the user click it*/
+    position: relative;
+    top: 0;
+    text-align: center;
+    text-transform: capitalize;
+    transition: background-color 0.15s ease-in-out;
+    vertical-align: middle;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+/*  to make the button move down when the user click it*/
+.btn:active,
+.submit:active {
+    top: 3px;
+}
+
+.btn-orange {
+    background-color: #df6e36;
+}
+
+.btn-green {
+    background-color: #4caf50;
+}
+
+.btn-orange:hover,
+.btn-orange:focus {
+    color: white;
+    background-color: #ff8346;
+}
+
+/* center class is to relocate the element to the center*/
+.center {
+    /* to center vertically and horizantlly in the middle of the container element */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* prefixes to support versions of browsers */
+    /* WebKit */
+    -webkit-transform: translate(-50%, -50%);
+    /* Mozilla */
+    -moz-transform: translate(-50%, -50%);
+    /* Opera */
+    -o-transform: translate(-50%, -50%);
+    /* Internet Explorer */
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.clearfix {
+    clear: both;
+}
+
+.container {
+    width: 75%;
+    /* auto on both sides right and left to center the div in the middle  */
+    margin: 0 auto;
+    /* padding-top to leave a space for nav */
+    padding-top: 2%;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.no-wrap {
+    flex-wrap: nowrap;
+}
+
+.layer {
+    /* The Fallback because not all the browsers support rgba*/
+    background-color: rgb(2, 2, 2); /* Fall back */
+    background-color: rgba(2, 2, 2, 0.3);
+    border-radius: inherit;
+    height: 100%;
+    width: 100%;
+    /* positon relative to create a positioning context for the element's children e.g (home-cover, a elements(discover-animals...)) */
+    position: relative;
+    z-index: 1;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-decoration-none {
+    text-decoration: none;
+}
+
+.text-decoration-none:hover,
+.text-decoration-none:focus {
+    text-decoration: none;
+}
+
+.text-orange {
+    color: #df6e36;
+}
+
+.text-white {
+    color: white;
+}
+
+.vertical-margin {
+    margin: 3% 0;
+}
+
+.underline {
+    border-bottom: 5px solid #df6e36;
+    margin: 2% auto 1%;
+    width: 60px;
+}
+
+/* navbar*/
+nav {
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.8);
+    font-family: Helvetica, Arial, sans-serif;
+    justify-content: space-around;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+}
+
+.nav__logo {
+    text-align: left;
+}
+
+.nav__menu {
+    list-style-type: none;
+}
+
+.nav__item {
+    font-size: 80%;
+    letter-spacing: 0.2em;
+    margin: 0 0.2em;
+    text-transform: uppercase;
+}
+
+.nav__link {
+    display: block;
+    /* I used em here because the nav is width-constrained so  percentage would be relative to the window size.*/
+    margin: 0.5em;
+    padding: 0.5em 0.1em;
+}
+
+.nav__link:hover,
+.nav__link:focus {
+    color: rgb(158, 152, 152);
+    outline: none;
+}
+
+.nav__btn {
+    letter-spacing: 0.1em;
+    padding: 0.6em;
+}
+
+/* end of nav */
+
+/*home-cover*/
+.home-cover-bg {
+    background-image: url("https://img5.goodfon.com/wallpaper/nbig/8/75/priroda-fon-derevo-zverek-krasnaia-panda-mordashka-malaia--1.jpg");
+}
+
+.home-cover__title {
+    color: #df5e1d;
+}
+
+.home-cover__btn-holder {
+    margin: 6%;
+}
+
+.home-cover__btn {
+    padding: 2.5%;
+}
+
+.home-cover__btn:hover {
+    color: white;
+}
+
+/* smooth class to  make letter-spacing shrink and grow while hovering*/
+.smooth {
+    transition: letter-spacing ease-out 0.5s;
+}
+
+.smooth:hover,
+.smooth:focus {
+    letter-spacing: 0.1em;
+}
+
+/* End of home-cover */
+
+
+/* discover-animals */
+.discover-animals__title-h3::first-letter {
+    color: #df6e36;
+    font-size: 150%;
+}
+
+.discover-animals__title-h3 {
+    margin-top: 0;
+}
+
+.discover-animals__content {
+    width: 60%;
+}
+
+/*discover-animals-bg */
+.discover-animals__bg {
+    height: 400px;
+    width: 30%;
+    margin-right: 2%;
+}
+
+.discover-animals__bg-carnivores {
+    background-image: url("https://hips.hearstapps.com/esq.h-cdn.co/assets/15/32/2560x1706/jaguar.jpg?resize=480:*");
+}
+
+.discover-animals__bg-herbivores {
+    background-image: url("https://cdn.mos.cms.futurecdn.net/uiCrUgVCf64TzEdTM8x9aD-1200-80.jpg");
+}
+
+.discover-animals__bg-birds {
+    background-image: url("https://animalinyou.com/img/animals/eagle.jpg");
+}
+
+.discover-animals__bg-reptiles {
+    background-image: url("https://kids.nationalgeographic.com/content/dam/kids/photos/animals/Reptiles/H-P/komodo-dragon-head-on.adapt.1190.1.jpg");
+}
+
+/* animals-bg in discover-animals-container */
+.discover-animals__link-bg {
+    height: 100px;
+    width: 100px;
+    margin: 1%;
+}
+
+.discover-animals__link-bg .layer:hover {
+    background-color: transparent;
+}
+
+
+.discover-animals__bg-bear {
+    background-image: url("https://animalinyou.com/img/animals/bear.jpg");
+}
+
+.discover-animals__bg-dog {
+    background-image: url("https://animalinyou.com/img/animals/dog2.jpg");
+}
+
+.discover-animals__bg-dolphin {
+    background-image: url("https://animalinyou.com/img/animals/dolphin2.jpg");
+}
+
+.discover-animals__bg-fox {
+    background-image: url("https://animalinyou.com/img/animals/fox2.jpg");
+}
+
+.discover-animals__bg-lion {
+    background-image: url("https://animalinyou.com/img/animals/lion2.jpg");
+}
+
+.discover-animals__bg-tiger {
+    background-image: url("https://animalinyou.com/img/animals/tiger2.jpg");
+}
+
+.discover-animals__bg-weasel {
+    background-image: url("https://animalinyou.com/img/animals/weasel2.jpg");
+}
+
+.discover-animals__bg-wolf {
+    background-image: url("https://animalinyou.com/img/animals/wolf2.jpg");
+}
+
+.discover-animals__bg-baboon {
+    background-image: url("https://animalinyou.com/img/animals/baboon2.jpg");
+}
+
+.discover-animals__bg-deer {
+    background-image: url("https://animalinyou.com/img/animals/deer2.jpg");
+}
+
+.discover-animals__bg-elephant {
+    background-image: url("https://animalinyou.com/img/animals/elephant2.jpg");
+}
+
+.discover-animals__bg-giraffe {
+    background-image: url("https://animalinyou.com/img/animals/giraffe2.jpg");
+}
+
+.discover-animals__bg-gorilla {
+    background-image: url("https://animalinyou.com/img/animals/gorilla2.jpg");
+}
+
+.discover-animals__bg-hippo {
+    background-image: url("https://animalinyou.com/img/animals/hippo2.jpg");
+}
+
+.discover-animals__bg-rhino {
+    background-image: url("https://animalinyou.com/img/animals/rhino2.jpg");
+}
+
+.discover-animals__bg-sheep {
+    background-image: url("https://animalinyou.com/img/animals/sheep2.jpg");
+}
+
+.discover-animals__bg-eagle {
+    background-image: url("https://animalinyou.com/img/animals/eagle2.jpg");
+}
+
+.discover-animals__bg-dove {
+    background-image: url("https://animalinyou.com/img/animals/dove2.jpg");
+}
+
+.discover-animals__bg-penguin {
+    background-image: url("https://animalinyou.com/img/animals/penguin2.jpg");
+}
+
+.discover-animals__bg-rooster {
+    background-image: url("https://animalinyou.com/img/animals/rooster2.jpg");
+}
+
+.discover-animals__bg-swan {
+    background-image: url("https://animalinyou.com/img/animals/swan2.jpg");
+}
+
+.discover-animals__bg-sparrow {
+    background-image: url("https://animalinyou.com/img/animals/sparrow2.jpg");
+}
+
+.discover-animals__bg-swift {
+    background-image: url("https://animalinyou.com/img/animals/swift2.jpg");
+}
+
+.discover-animals__bg-vulture {
+    background-image: url("https://animalinyou.com/img/animals/vulture2.jpg");
+}
+
+.discover-animals__bg-crocodile {
+    background-image: url("https://animalinyou.com/img/animals/crocodile2.jpg");
+}
+
+.discover-animals__bg-gecko {
+    background-image: url("https://www.petmd.com/sites/default/files/baby-lizard-488959411.jpg");
+}
+
+.discover-animals__bg-lizard {
+    background-image: url("https://image.shutterstock.com/image-photo/sand-lizard-male-lacerta-agilis-600w-1787898506.jpg");
+}
+
+.discover-animals__bg-snake {
+    background-image: url("https://animalinyou.com/img/animals/snake2.jpg");
+}
+
+/* end of discover-animals styling */
+
+
+.personalities__type-container {
+    margin-top: 1%;
+    overflow: hidden;
+    width: 33%;
+}
+
+.personalities__type__text {
+    height: 90px;
+}
+
+.personalities__type__img {
+    background-color: #df6e36;
+    height: 80%;
+    width: 80%;
+}
+
+.personalities__type__img:hover {
+    opacity: 0.7;
+}
+
+/* styling personalities table  */
+.personalities__table {
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border-bottom: 1px solid #ddd;
+    line-height: 1.7em;
+    padding: 0.5em;
+    text-align: justify;
+}
+
+th {
+    text-transform: uppercase;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.table__first-col {
+    font-weight: bold;
+    /* to prevent this td from text wrapping */
+    white-space: nowrap;
+}
+
+.personalities__title {
+    text-transform: capitalize;
+    margin: 1% 0;
+}
+
+.personalities__img {
+    width: 30%;
+    height: 200px;
+    margin-right: 1%;
+}
+/* end of personalities section */
+
+/*  test-form*/
+.test-form-bg {
+    background: url("https://i.dlpng.com/static/png/481452_preview.png"),
+        url("https://pngimage.net/wp-content/uploads/2018/06/%D0%B2%D0%BE%D1%80%D0%BE%D0%B1%D0%B5%D0%B9-png-1.png"),
+        url("https://www.freepnglogos.com/uploads/elephant-png/elephant-snapsafe-titan-snapsafe-6.png");
+    background-repeat: no-repeat;
+    background-size: 15%, 20%, 15%;
+    background-position: left bottom, right top, right bottom;
+}
+
+.test-form {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.test-form__question {
+    font-weight: bold;
+    font-size: 1.4em;
+    padding-bottom: 1%;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #dcdcdc;
+    margin: 0;
+    padding: 2%;
+}
+
+.radio-inline {
+    cursor: pointer;
+    margin: 0 2%;
+}
+
+input[type="radio"] {
+    margin-right: 0.5%;
+}
+
+.test-form__btn {
+    font-size: 1.1em;
+    margin: 2% 0;
+    padding: 1%;
+}
+/* end of test form styling */
+
+/* grid layout styling */
+.border-right {
+    border-right: 3px solid#C55F2D;
+    /* I used em here because col11 has 2 spans so using the percentage unit won't make the padding equal in all the container */
+    padding-right: 0.5em;
+}
+
+.border-bottom-transition {
+    transition: border-bottom .5s;
+}
+
+.border-bottom-transition:hover,
+.border-bottom-transition:focus {
+    border-bottom: 5px solid #C55F2D;
+}
+
+.h-55 {
+    height: 55%;
+}
+
+.grid-layout {
+    font-size: 1em;
+    padding: 4% 1%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    column-gap: 1%;
+    row-gap: 1em;
+}
+
+.col-11-2 {
+    grid-row: 1/2;
+    grid-column: 1/3;
+}
+
+.col-13 {
+    grid-row: 1/2;
+    grid-column: 3/4;
+}
+
+.col-21 {
+    grid-row: 2/3;
+    grid-column: 1/2;
+}
+
+.col-22 {
+    grid-row: 2/3;
+    grid-column: 2/3;
+}
+
+.col-23 {
+    grid-row: 2/3;
+    grid-column: 3/4;
+}
+
+.grid-layout__title {
+    display: inline;
+    font-size: 1em;
+}
+
+.grid-layout__absloute-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    margin-left: 1%;
+}
+
+.grid-layout__text {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.grid-layout__content {
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+/* content-parent & content-child to smooth and scale bg-content using transition*/
+/* parent and child in order when to scale the background image not to scale up outside the its container by using overflow: hidden */
+.bg-parent-container {
+    /* display block for the a elements that has this class  */
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-child-container {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+
+.bg-child-container:hover,
+.bg-child-container:focus {
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.grid-layout__bg-dog {
+    background-image: url("https://static.boredpanda.com/blog/wp-content/uuuploads/interesting-happy-facts/interesting-happy-facts-33.jpg");
+}
+
+.grid-layout__bg-cow {
+    background-image: url("https://i.redd.it/72bwh12eb9tz.jpg");
+}
+
+.grid-layout__bg-squirrel {
+    background-image: url("https://wordhistories.files.wordpress.com/2020/04/66783-squirrel.jpg?w=584");
+
+}
+
+.grid-layout__bg-otter {
+    background-image: url("https://static.boredpanda.com/blog/wp-content/uploads/2014/04/happy-animal-facts-1.jpg");
+
+}
+
+.grid-layout__bg-penguins {
+    background-image: url("https://static.boredpanda.com/blog/wp-content/uuuploads/interesting-happy-facts/interesting-happy-facts-16.jpg");
+
+}
+
+/* grid layoout aside */
+.sub-layout-container {
+    grid-row: 1/-1;
+    grid-column: 4/5;
+    justify-content: space-between;
+}
+
+.aside__title {
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.aside__container {
+    margin: 1% 0;
+}
+
+.aside__link {
+    margin-right: 2%;
+}
+
+.aside__header::before {
+    content: "";
+    background-color: #C55F2D;
+    padding-left: 2%;
+    margin: 1% 1% 1% 0;
+}
+
+/* Footer */
+footer {
+    border-top: #90877a 1px solid;
+    background-color: black;
+    padding: 1%;
+    text-transform: capitalize;
+    justify-content: center;
+    vertical-align: center;
+}
+.footer__menu {
+    list-style-type: none;
+    margin: 0 1% ;
+}
+.footer__item {
+    margin: 2% 4%;
+    text-transform: uppercase;
+}
+.footer__link{
+    color: #5f5a53;
+}
+
+.footer__link:hover,
+.footer__link:focus {
+    text-decoration: underline #5f5a53;
+}
+/* to make the site responsive on smartphones */
+@media screen and (max-width: 600px) {
+    body {
+        font-size: 13px;
+    }
+
+    h1,
+    h2 {
+        font-size: 120%;
+        font-weight: bold;
+    }
+
+    nav {
+        background-color: black;
+    }
+
+    .home-cover {
+        width: 90%;
+    }
+
+    .big-headline {
+        font-size: 1.5em;
+    }
+
+    .home-cover-bg {
+        height: 550px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 3%;
+    }
+
+    .main-text {
+        width: 100%;
+    }
+
+    .nav__item {
+        flex: none;
+    }
+
+    .discover-animals__bg {
+        width: 100%;
+        height: 200px;
+        margin: 3% auto;
+    }
+
+    .discover-animals__content {
+        width: 100%;
+    }
+
+    .home-cover__btn {
+        font-size: 100%;
+    }
+
+    .personalities__img {
+        display: none;
+    }
+
+    .test-form {
+        width: 100%;
+    }
+
+    .test-form-bg {
+        background: url("https://i.dlpng.com/static/png/481452_preview.png"),
+            url("https://pngimage.net/wp-content/uploads/2018/06/%D0%B2%D0%BE%D1%80%D0%BE%D0%B1%D0%B5%D0%B9-png-1.png"),
+            url("https://www.freepnglogos.com/uploads/elephant-png/elephant-snapsafe-titan-snapsafe-6.png");
+        background-repeat: no-repeat, no-repeat, no-repeat;
+        background-size: 12%;
+        background-position: left bottom, right top, right bottom;
+    }
+
+    .test-form__question {
+        font-size: 1em;
+    }
+
+    input[type="radio"] {
+        width: 0.8em;
+        height: 0.8em;
+    }
+    .grid-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6 , 0.4fr);
+        column-gap: 1%;
+        row-gap: 1em;
+    }
+
+    .col-11-2 {
+        grid-row: 1/2;
+        grid-column: 1/2;
+    }
+
+    .col-13 {
+        grid-row: 2/3;
+        grid-column: 1/2;
+
+    }
+
+    .col-21 {
+        grid-row: 3/4;
+        grid-column: 1/2;
+    }
+
+    .col-22 {
+        grid-row: 4/5;
+        grid-column: 1/2;
+    }
+
+    .col-23 {
+        grid-row: 5/6;
+        grid-column: 1/2;
+    }
+
+    .sub-layout-container {
+        grid-row: 6/7;
+        grid-column: 1/2;
+    }
+}
+
+@media (max-width: 1000px) and (min-width: 650px) {
+    .container {
+        width: 100%;
+        padding: 0 3%;
+    }
+    .grid-layout {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 0.5fr);
+        column-gap: 1%;
+        row-gap: 1em;
+    }
+
+    .col11-2 {
+        grid-row: 1/2;
+        grid-column: 1/3;
+    }
+
+    .col-13 {
+        grid-row: 1/2;
+        grid-column: 3/4;
+    }
+
+    .col-21 {
+        grid-row: 2/3;
+        grid-column: 1/2;
+    }
+
+    .col-22 {
+        grid-row: 2/3;
+        grid-column: 2/3;
+    }
+
+    .col-23 {
+        grid-row: 2/3;
+        grid-column: 3/4;
+    }
+
+    .sub-layout-container {
+        grid-row: 3/4;
+        grid-column: 1/4;
+    }
+
+}
